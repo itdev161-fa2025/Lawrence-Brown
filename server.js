@@ -8,12 +8,12 @@ const app = express();
 // Connect Database
 connectDatabase();
 
-Configure Middleware
-app.use(ess.json{ express.json({ extended: false })});
+// Configure Middleware
+app.use(express.json({ extended: false }));
 
 //API endpoints
 /**
- *  * @route GET
+ * @route GET
  * @ @desc Test endpoint
  */
 app.get('/', (req, res) =>
