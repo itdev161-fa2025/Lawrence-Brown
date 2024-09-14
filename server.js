@@ -8,12 +8,12 @@ const app = express();
 // Connect Database
 connectDatabase();
 
-Configure Middleware
-app.use(ess.json{ express.json({ extended: false })});
+// Configure Middleware
+app.use(express.json({ extended: false }));
 
 //API endpoints
 /**
- *  * @route GET
+ * @route GET
  * @ @desc Test endpoint
  */
 app.get('/', (req, res) =>
@@ -25,7 +25,7 @@ app.get('/', (req, res) =>
  * @ desc Register user
  */
 app.post
-('api/users', 
+('/api/users', 
 [
     check('name', 'Please enter your name').not().isEmpty(),
     check('email', 'Please enter a valid email').isEmail(),
