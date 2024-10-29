@@ -6,6 +6,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from 'config';
 import User from './models/User'
+import auth from './middleware/auth';
 
 // Initialize express application
 const app = express();
@@ -87,6 +88,19 @@ app.post('/api/users',
         res.status(500).send('Server error');
       }
     }
+});
+
+/**
+ * @route GET api/auth
+ * @desc Authorize user
+ */
+app.get('/api/auth', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).send('Unknown server error');
+  }
 });
 
 // Connection listener
