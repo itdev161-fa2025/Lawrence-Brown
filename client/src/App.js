@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import axios from 'axios';
 import { Routes, Route, Link } from 'react-router-dom';
-import Home from './components/Home/Home';
+import Home from './components/Home/Home.js';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 
@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000')
+    axios.get('http://localhost:3000')
       .then((response) => {
         this.setState({
           data: response.data
@@ -36,9 +36,9 @@ class App extends React.Component {
         </header>
         <main>
           <Routes>
-            <Route path="/" />
-            <Route path="/register" />
-            <Route path="login" />
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
 
